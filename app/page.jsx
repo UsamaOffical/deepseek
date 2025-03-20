@@ -4,6 +4,7 @@ import Image from "next/image";
 import { useState } from "react";
 import SideBar from "./components/sideBar";
 import PromptBox from "./components/promptBox";
+import Message from "./components/message";
 
 export default function Home() {
   const [expand,setExpand] = useState(false);
@@ -31,11 +32,13 @@ export default function Home() {
             </>
           ):
           (
-            <div></div>
+            <div>
+              <Message role='user' content='What is next js'/>
+            </div>
           )
         }
         <PromptBox isLoading={isLoading} setIsLoading={setIsLoading}/>
-        <p className="text-xs bottom-0 absolute text-gray-500">AI-generated, for reference only</p>
+        <p className="text-xs bottom-1 absolute text-gray-500">AI-generated, for reference only</p>
         </div>
         
       </div>

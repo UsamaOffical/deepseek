@@ -1,13 +1,15 @@
 import { assets } from "@/assets/assets";
 import Image from "next/image";
-import React from "react";
+import React, { useState } from "react";
 import { useClerk,UserButton } from "@clerk/nextjs";
 import { useAppContext } from "../context/appContext";
+import ChatLabel from "./chatLabel";
 
 
 const SideBar = ({ expand, setExpand }) => {
     const {openSignIn}= useClerk()
     const {user} = useAppContext()
+    const [openMenu,setOpenMenu] = useState({id:0 , open:false})
   return (
     <div
       className={`flex flex-col justify-between pt-7 transition-all z-59 max-md:absolute max-md:h-screen bg-[#212327] ${
@@ -58,7 +60,7 @@ const SideBar = ({ expand, setExpand }) => {
         </button>
         <div className={`mt-8 text-white/25 text-sm ${expand ? 'block':'hidden'}`}>
             <p className="my-1 ">Recents</p>
-            {/* chatLabel */}
+            <ChatLabel openMenu={openMenu} setOpenMenu={setOpenMenu}/>
         </div>
       </div>
       <div>
